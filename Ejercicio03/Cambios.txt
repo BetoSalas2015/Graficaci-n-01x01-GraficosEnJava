@@ -1,0 +1,5 @@
+Agregamos asignapuntos() a la clase dibujo
+
+Creamos la interfaz de captura de datos
+
+Hicimos que el objeto Dibujo indepenfdiente dibujara
