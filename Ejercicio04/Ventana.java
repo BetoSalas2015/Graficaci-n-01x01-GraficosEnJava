@@ -1,7 +1,6 @@
 import javax.security.auth.PrivateCredentialPermission;
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.Vector;
 import java.awt.*;
 
 public class Ventana extends JFrame {
@@ -11,8 +10,6 @@ public class Ventana extends JFrame {
     JTextField punto1x, punto1y, punto2x, punto2y;
     JLabel lblPunto1, lblPunto2;
     JButton btnGraficar;
-
-    
 
     public Ventana() {
         super("Graficos en Java");
@@ -67,12 +64,11 @@ public class Ventana extends JFrame {
     private class BotonGrafica implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            Vector<Punto> vectorPuntos = new Vector<Punto>();
 
-            vectorPuntos.add(new Punto(Integer.parseInt(punto1x.getText()),Integer.parseInt( punto1y.getText())));
-            vectorPuntos.add(new Punto(Integer.parseInt(punto2x.getText()), Integer.parseInt(punto2y.getText())));
-
-            areaDibujo.asignaPuntos(vectorPuntos);
+            Punto p1 = new Punto(Integer.parseInt(punto1x.getText()),Integer.parseInt( punto1y.getText()));
+            Punto p2 = new Punto(Integer.parseInt(punto2x.getText()), Integer.parseInt(punto2y.getText()));
+   
+            areaDibujo.asignaPuntos(p1, p2);
             areaDibujo.repaint();
         }
 

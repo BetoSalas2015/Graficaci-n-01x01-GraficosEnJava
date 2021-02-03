@@ -1,0 +1,2 @@
+Cambie las cordenadas individuales  enteras por objetos Punto
+Se creo la lase Punto
