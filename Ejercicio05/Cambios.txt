@@ -1,0 +1,4 @@
+Crear un vector con los puntos a graficar
+
+Modificamos dibujo para que grafique todos los puntos como una figura cerrada
+

@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.Vector;
 import java.awt.*;
-import java.awt.geom.*;
 
 public class Ventana extends JFrame {
 
@@ -13,8 +12,9 @@ public class Ventana extends JFrame {
     JTextField punto1x, punto1y, punto2x, punto2y;
     JLabel lblPunto1, lblPunto2;
     JButton btnGraficar, btnAgregar;
-    Vector<Point> vectorPuntos;
+    Vector<Punto> vectorPuntos;
     
+
     public Ventana() {
         super("Graficos en Java");
         panelDatos = new JPanel();
@@ -53,7 +53,7 @@ public class Ventana extends JFrame {
         btnGraficar.addActionListener(new BotonGrafica() );
         btnAgregar.addActionListener(new BotonAgregar() );
 
-        vectorPuntos = new Vector<Point>();
+        vectorPuntos = new Vector<Punto>();
 
         addWindowListener( new CW() );
 
@@ -79,7 +79,7 @@ public class Ventana extends JFrame {
 
     private class BotonAgregar implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            vectorPuntos.add(new Point(Integer.parseInt(punto1x.getText()),Integer.parseInt( punto1y.getText())));
+            vectorPuntos.add(new Punto(Integer.parseInt(punto1x.getText()),Integer.parseInt( punto1y.getText())));
         }
 
     }
