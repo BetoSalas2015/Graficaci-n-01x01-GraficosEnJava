@@ -1,36 +1,32 @@
-import javax.management.loading.PrivateClassLoader;
-import javax.security.auth.PrivateCredentialPermission;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.Vector;
 import java.awt.*;
 import java.awt.geom.*;
 
-public class Ventana extends JFrame {
+public class Dialogo extends JFrame {
 
     Dibujo areaDibujo;
     JPanel panelDatos, panelPunto1, panelPunto2;
     JTextField punto1x, punto1y, punto2x, punto2y;
-    JLabel lblPunto1, lblPunto2;
+    JLabel lblPunto1, lblPunto2, lblMensaje;
     JButton btnGraficar, btnAgregar;
     Vector<Point> vectorPuntos;
     
-    public Ventana() {
+    public Dialogo() {
         super("Graficos en Java");
         panelDatos = new JPanel();
         panelDatos.setLayout(new GridLayout(10,1) );
         panelPunto1 = new JPanel();
         panelPunto1.setLayout(new GridLayout(1,2) );
-        //panelPunto2 = new JPanel();
-        //panelPunto2.setLayout(new GridLayout(1,2) );
 
         lblPunto1 = new JLabel("Punto: ");
-        //lblPunto2 = new JLabel("Punto 2: ");
+        lblMensaje = new JLabel("");
+
 
         punto1x = new JTextField("0");
         punto1y = new JTextField("0");
-        //punto2x = new JTextField("0");
-        //punto2y = new JTextField("0");
+
 
         areaDibujo = new Dibujo();
 
@@ -38,14 +34,14 @@ public class Ventana extends JFrame {
         btnAgregar = new JButton("Agregar Punto");
 
         panelPunto1.add(punto1x); panelPunto1.add(punto1y);
-        //panelPunto2.add(punto2x); panelPunto2.add(punto2y);
+
 
         panelDatos.add(lblPunto1);
         panelDatos.add(panelPunto1);
-        //panelDatos.add(lblPunto2);
-        //panelDatos.add(panelPunto2);
+
         panelDatos.add(btnAgregar);
         panelDatos.add(btnGraficar);
+        panelDatos.add(lblMensaje);
 
         add(panelDatos, "West");
         add(areaDibujo, "Center");
@@ -53,7 +49,7 @@ public class Ventana extends JFrame {
         btnGraficar.addActionListener(new BotonGrafica() );
         btnAgregar.addActionListener(new BotonAgregar() );
 
-       
+        vectorPuntos = new Vector<Point>();
 
         addWindowListener( new CW() );
 
@@ -72,10 +68,6 @@ public class Ventana extends JFrame {
     private class BotonGrafica implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            vectorPuntos = new Vector<Point>();
-
-            
-            // escriba su algoritmo aquí
             areaDibujo.asignaPuntos(vectorPuntos);
             areaDibujo.repaint();
         }
@@ -83,12 +75,15 @@ public class Ventana extends JFrame {
 
     private class BotonAgregar implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            vectorPuntos.add(new Point(Integer.parseInt(punto1x.getText()),Integer.parseInt( punto1y.getText())));
+            System.out.println("Error en la entrada");
+            lblMensaje.setText("Error en la entrada.");
+            JOptionPane.showMessageDialog(null, "Error: te equivoste en la entrada", "Error de datos", 
+            JOptionPane.ERROR_MESSAGE);
         }
 
     }
 
     public static void main(String[] args) {
-        Ventana ventana = new Ventana();
+        Dialogo ventana = new Dialogo();
     }
 }

@@ -7,7 +7,7 @@ public class Dibujo extends Canvas {
     private Vector<Point> puntosGraficar;
     
     public Dibujo() {
-
+        
     }
 
     public void asignaPuntos(Vector<Point> vectorPuntos) {
@@ -17,6 +17,7 @@ public class Dibujo extends Canvas {
     public void paint(Graphics g) {
         Graphics2D g2d = ( Graphics2D ) g;
         int i;
+        System.out.println(getHeight());
         //  Escriba su código aquí
         g.translate(250, 200);   
         //  Dibujo lo ejes coordenados

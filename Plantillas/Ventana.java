@@ -76,6 +76,8 @@ public class Ventana extends JFrame {
     private class BotonAgregar implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             vectorPuntos.add(new Point(Integer.parseInt(punto1x.getText()),Integer.parseInt( punto1y.getText())));
+            Double.parseDouble("0.02"); //  => 0.02   (double)   -  8 bytes memoria
+            Float.parseFloat("0.02");   //  => 0.02f  (float)   - 4 bytes de memoria
         }
 
     }
